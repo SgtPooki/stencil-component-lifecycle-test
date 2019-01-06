@@ -1,41 +1,54 @@
-# Stencil App Starter
+# Stencil Component Lifecycle Test
 
-Stencil is a compiler for building fast web apps using Web Components.
+Small repo, fork of Stencil starter: https://github.com/ionic-team/stencil-app-starter
+created to test component lifecycle hierarchy as in docs: https://stenciljs.com/docs/component-lifecycle
 
-Stencil combines the best concepts of the most popular frontend frameworks into a compile-time rather than run-time tool.  Stencil takes TypeScript, JSX, a tiny virtual DOM layer, efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser supporting the Custom Elements v1 spec.
+Please uncomment blocks in index.html to check what's the lifecycle hierarchy.
+My tests:
 
-Stencil components are just Web Components, so they work in any major framework or with no framework at all. In many cases, Stencil can be used as a drop in replacement for traditional frontend frameworks given the capabilities now available in the browser, though using it as such is certainly not required.
+<cmp-a>
+  <cmp-b>
+    <cmp-c></cmp-c>
+  </cmp-b>
+</cmp-a>
 
-Stencil also enables a number of key capabilities on top of Web Components, in particular Server Side Rendering (SSR) without the need to run a headless browser, pre-rendering, and objects-as-properties (instead of just strings).
+is giving : 
+a will load
+b will load
+c will load
+c did load 
+b did load
+a did load
 
-## Getting Started
+exactly as in docs.
 
-To start a new project using Stencil, clone this repo to a new directory:
+<cmp-c>
+  <cmp-b>
+    <cmp-a></cmp-a>
+  </cmp-b>
+</cmp-c>
 
-```bash
-npm init stencil app
-```
+is giving:
+a will load
+a did load
+b will load
+b did load
+c will load
+c did load
 
-and run:
+which is wrong and seems to go with alphabetical order. should be:
+c will load
+b will load
+a will load
+a did load 
+b did load
+c did load
 
-```bash
-npm start
-```
 
-To build the app for production, run:
-
-```bash
-npm run build
-```
-
-To run the unit tests once, run:
-
-```
-npm test
-```
-
-To run the unit tests and watch for file changes during development, run:
-
-```
-npm run test.watch
-```
+Repo is also showing how to influence this hierarchy programatically, assuming that child components know about its parent. Can be usefull when child needs some data from parent or from root component In articular when using Stencil with Redux and configuiring Redux store in root component. This may help:
+ async componentWillLoad() {
+    await document.querySelector('root-cmp').componentOnReady();
+    // root component is loaded. if Redux store is defined/configured there (or other data required here) 
+    // you are sure that it is ready to use here
+    ...
+    }
