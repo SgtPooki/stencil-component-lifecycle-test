@@ -18,7 +18,27 @@
 </head>
 <body>
 
-  <app-root></app-root>
+<!-- Uncomment to check components lifecycle order.
+     Should be: a will load, b will load, c will load, c did load, b did load, a did load
+-->
+<!--
+  <cmp-a>
+    <cmp-b>
+      <cmp-c></cmp-c>
+    </cmp-b>
+  </cmp-a>
+-->
+
+<!-- Uncomment to check components lifecycle order.
+     Should be: c will load, b will load, a will load, a did load, b did load, c did load
+-->
+<!--
+  <cmp-c>
+    <cmp-b>
+      <cmp-a></cmp-a>
+    </cmp-b>
+  </cmp-c>
+-->
 
 </body>
 </html>

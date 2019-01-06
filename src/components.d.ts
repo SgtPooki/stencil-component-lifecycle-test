@@ -7,71 +7,63 @@
 
 import '@stencil/core';
 
-import '@stencil/router';
-import '@stencil/state-tunnel';
-import {
-  MatchResults,
-} from '@stencil/router';
+
 
 
 export namespace Components {
 
-  interface AppHome {}
-  interface AppHomeAttributes extends StencilHTMLAttributes {}
+  interface CmpA {}
+  interface CmpAAttributes extends StencilHTMLAttributes {}
 
-  interface AppProfile {
-    'match': MatchResults;
-  }
-  interface AppProfileAttributes extends StencilHTMLAttributes {
-    'match'?: MatchResults;
-  }
+  interface CmpB {}
+  interface CmpBAttributes extends StencilHTMLAttributes {}
 
-  interface AppRoot {}
-  interface AppRootAttributes extends StencilHTMLAttributes {}
+  interface CmpC {}
+  interface CmpCAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'AppHome': Components.AppHome;
-    'AppProfile': Components.AppProfile;
-    'AppRoot': Components.AppRoot;
+    'CmpA': Components.CmpA;
+    'CmpB': Components.CmpB;
+    'CmpC': Components.CmpC;
   }
 
   interface StencilIntrinsicElements {
-    'app-home': Components.AppHomeAttributes;
-    'app-profile': Components.AppProfileAttributes;
-    'app-root': Components.AppRootAttributes;
+    'cmp-a': Components.CmpAAttributes;
+    'cmp-b': Components.CmpBAttributes;
+    'cmp-c': Components.CmpCAttributes;
   }
 
 
-  interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {}
-  var HTMLAppHomeElement: {
-    prototype: HTMLAppHomeElement;
-    new (): HTMLAppHomeElement;
+  interface HTMLCmpAElement extends Components.CmpA, HTMLStencilElement {}
+  var HTMLCmpAElement: {
+    prototype: HTMLCmpAElement;
+    new (): HTMLCmpAElement;
   };
 
-  interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {}
-  var HTMLAppProfileElement: {
-    prototype: HTMLAppProfileElement;
-    new (): HTMLAppProfileElement;
+  interface HTMLCmpBElement extends Components.CmpB, HTMLStencilElement {}
+  var HTMLCmpBElement: {
+    prototype: HTMLCmpBElement;
+    new (): HTMLCmpBElement;
   };
 
-  interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
-  var HTMLAppRootElement: {
-    prototype: HTMLAppRootElement;
-    new (): HTMLAppRootElement;
+  interface HTMLCmpCElement extends Components.CmpC, HTMLStencilElement {}
+  var HTMLCmpCElement: {
+    prototype: HTMLCmpCElement;
+    new (): HTMLCmpCElement;
   };
 
   interface HTMLElementTagNameMap {
-    'app-home': HTMLAppHomeElement
-    'app-profile': HTMLAppProfileElement
-    'app-root': HTMLAppRootElement
+    'cmp-a': HTMLCmpAElement
+    'cmp-b': HTMLCmpBElement
+    'cmp-c': HTMLCmpCElement
   }
 
   interface ElementTagNameMap {
-    'app-home': HTMLAppHomeElement;
-    'app-profile': HTMLAppProfileElement;
-    'app-root': HTMLAppRootElement;
+    'cmp-a': HTMLCmpAElement;
+    'cmp-b': HTMLCmpBElement;
+    'cmp-c': HTMLCmpCElement;
   }
 
 
