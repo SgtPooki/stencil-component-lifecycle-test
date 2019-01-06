@@ -15,13 +15,15 @@ My tests:
 ```
 
 is giving : 
-a will load
-b will load
-c will load
-c did load 
-b did load
-a did load
+- a will load
+- b will load
+- c will load
+- c did load 
+- b did load
+- a did load
+
 exactly as in docs.
+
 
 ```
 <cmp-c>
@@ -31,20 +33,21 @@ exactly as in docs.
 </cmp-c>
 ```
 is giving:
-a will load
-a did load
-b will load
-b did load
-c will load
-c did load
+- a will load
+- a did load
+- b will load
+- b did load
+- c will load
+- c did load
+
 
 which is wrong and seems to go with alphabetical order. should be:
-c will load
-b will load
-a will load
-a did load 
-b did load
-c did load
+- c will load
+- b will load
+- a will load
+- a did load 
+- b did load
+- c did load
 
 
 Repo is also showing how to influence this hierarchy programatically, assuming that child components know about its parent. Can be usefull when child needs some data from parent or from root component In articular when using Stencil with Redux and configuiring Redux store in root component. This may help:
