@@ -1,5 +1,4 @@
-import { Component} from "@stencil/core";
-
+import { Component, h } from "@stencil/core";
 
 @Component({
   tag: "cmp-c"
@@ -7,18 +6,19 @@ import { Component} from "@stencil/core";
 export class Cmpc {
 
  async componentWillLoad() {
-    // uncomment to manipulate components lifecycle methods order 
+    // uncomment to manipulate components lifecycle methods order
     //await document.querySelector('cmp-b').componentOnReady();
-    console.log("cmp-c will load");
+    console.log("cmp-c will load", performance.now());
   }
 
   componentDidLoad() {
-    console.log('cmp-c did load');
+    console.log('cmp-c did load', performance.now());
   }
 
   render() {
+    console.log('cmp-c render', performance.now());
       return (
-        <slot/>
+        <div>{performance.now()}</div>
       );
     }
   }
